@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/8874c6cb4f.js" crossorigin="anonymous"></script>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body{
+        background-color: #1ea8c4;
+      }
+      nav{
+        position: fixed !important;
+        width: 100%;
+        top:0;
+        z-index: 1000;
+      }
+      footer{
+        padding-top:10px;
+        position: fixed;
+        bottom: 0;
+        text-align: center;
+        background-color: #f8f9fa;
+        width: 100%;
+      }
+    </style>
+</head>
+<body>
+    <!-- navbar section start -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary px-5">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">easily</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/jobs">Jobs</a>
+              </li>
+              <li class="nav-item dropdown">
+                <% if(locals.userEmail){%>
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <%= locals.userName %>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/logout">Log out</a></li>
+                    <li><a class="dropdown-item" href="/postjob">Post a job</a></li>
+                  </ul>
+                  <%}else{%>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Recruiter
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/login">Login</a></li>
+                      <li><a class="dropdown-item" href="/404">Post a job</a></li>
+                  </ul>
+                <%} %>
+              </li>
+            </ul>
+            <form action="/search" method="post" class="d-flex" role="search">
+              <input class="form-control me-2" type="search" name="company" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+    </nav>
+    <!-- navbar section end -->
+
+    <!-- <main section start -->
+    <main>
+        <%-body%>
+    </main>
+    <!-- <main section end -->
+    <footer>
+      <p class="text-secondary">Embrace the journey, conquer the challenges, and unlock the door to your dream career</p>
+    </footer>
+</body>
+</html>

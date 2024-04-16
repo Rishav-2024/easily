@@ -1,0 +1,36 @@
+<div class="p-3 my-5">
+  <% if(locals.userEmail && locals.lastVisit){ %>
+    <div class="text-center">
+      <div class="alert bg-secondary mb-2 py-1 " role="alert">
+          <h5 class="m-0 text-light">Your Last Visit was on : <%= locals.lastVisit %></h5>
+      </div>
+    </div>
+  <% } %>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Resume</th>
+    </tr>
+    </thead>
+    <tbody>
+      <% var i = 0;%>
+      <% job.applicants.forEach(ap =>{%>
+        <%i++%>
+        <tr>
+          <th scope="row"><%=i%></th>
+          <td><%=ap.name%></td>
+          <td><%=ap.email%></td>
+          <td><%=ap.phone%></td>
+          <td> <a href="<%=ap.resume%>" target="_blank" type="application/pdf" class="btn btn-primary py-0">View</a> </td>
+        </tr>
+      <%})%>
+      
+    </tbody>
+
+  </table>
+</div>
+

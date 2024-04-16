@@ -1,0 +1,106 @@
+<div class="py-5">
+    <form action="/job/update" method="post" class="my-5 w-50 py-2 px-5 mx-auto"  style="background-color: white; box-shadow: 1px 1px 6px 4px rgba(0, 0, 0, 0.5); border-radius: 8px;">
+        <p class="fs-3 text-center">Update job</p>
+        <input type="hidden" class="form-control" id="id" name="id" value="<%= job.id %>">
+        <div class="mb-3 px-1 d-flex align-items-center border  border-secondary rounded-2">
+            <select class="w-100 p-1 text-secondary" name="jobCategory" style=" border: none; outline:none; ">
+                <option value="<%=job.jobCategory%>" selected="selected"><%=job.jobCategory%></option>
+                <option value="">select job category</option>
+                <option value="Tech">Tech</option>
+                <option value="Non Tech">Non Tech</option>
+            </select>
+        </div>
+
+        <div class="mb-3 px-1 d-flex align-items-center border  border-secondary rounded-2">
+            <select name="designation" class="w-100 p-1 text-secondary" style=" border: none; outline:none;">
+                
+                <option value="<%=job.designation%>" selected="selected"><%=job.designation%></option>
+                <option value="">select job designation</option>
+                <option value="HR">HR</option>
+                <option value="SDE">SDE</option>
+                <option value="DevOps">DevOps</option>
+                <option value="MERN Developer">MERN Developer</option>
+                <option value="MARN Developer">MARN Developer</option>
+                <option value="Front-End Developer">Front-End Developer</option>
+                <option value="Back-End Developer">Back-End Developer</option>
+                <option value="Full-Stack Developer">Full-Stack Developer</option>
+            </select>
+        </div>
+
+        <div class="mb-3 d-flex align-items-center border  border-secondary rounded-2">
+          <input type="text" class="form-control text-secondary" name="location" value="<%=job.location%>"  placeholder="Job Location" style=" border: none; outline:none;">
+        </div>
+        <div class="mb-3 d-flex align-items-center border  border-secondary rounded-2">
+          <input type="text" class="form-control text-secondary" name="companyName" value="<%=job.companyName%>" placeholder="Company Name" style=" border: none; outline:none;">
+        </div>
+        <div class="mb-3 d-flex align-items-center">
+          <input type="text" class="form-control border-secondary me-1 text-secondary" value="<%=job.salary%>" name="salary" placeholder="Salary">
+          <input type="number" class="form-control border-secondary ms-1 text-secondary" value="<%=job.position%>" name="position" placeholder="Total Positions">
+        </div>
+        <div class="mb-3 d-flex align-items-center border border-secondary rounded-2">
+            <div class=" d-flex flex-column overflow-y-scroll w-50 p-1" style="height:100px;">
+                <span>
+                    <% if(job.skills.includes("React")){ %>
+                        <input type="checkbox" value="React" id="React" name="skills" class="mx-1" checked>
+                    <%}else{%>
+                        <input type="checkbox" value="React" id="React" name="skills" class="mx-1">
+                    <%}%>
+                    <label for="React">React</label>
+                </span>
+                <span>
+                    <% if(job.skills.includes("NodeJs")){ %>
+                        <input type="checkbox" value="NodeJs" id="NodeJs" name="skills" class="mx-1" checked>
+                    <%}else{%>
+                        <input type="checkbox" value="NodeJs" id="NodeJs" name="skills" class="mx-1">
+                    <%}%>   
+                    <label for="NodeJs">NodeJs</label>
+                </span>
+                <span>
+                    <% if(job.skills.includes("Express")){ %>
+                        <input type="checkbox" value="Express" id="Express" name="skills" class="mx-1" checked>
+                    <%}else{%>
+                        <input type="checkbox" value="Express" id="Express" name="skills" class="mx-1">
+                    <%}%>   
+                    <label for="Express">Express</label>
+                </span>
+                <span>
+                    <% if(job.skills.includes("MongoDB")){ %>
+                        <input type="checkbox" value="MongoDB" id="MongoDB" name="skills" class="mx-1" checked>
+                    <%}else{%>
+                        <input type="checkbox" value="MongoDB" id="MongoDB" name="skills" class="mx-1">
+                    <%}%>  
+                    <label for="MongoDB">MongoDB</label>
+                </span>
+                <span>
+                    <% if(job.skills.includes("DSA")){ %>
+                        <input type="checkbox" value="DSA" id="DSA" name="skills" class="mx-1" checked>
+                    <%}else{%>
+                        <input type="checkbox" value="DSA" id="DSA" name="skills" class="mx-1">
+                    <%}%>  
+                    <label for="DSA">DSA</label>
+                </span>
+                <span>
+                    <% if(job.skills.includes("JAVA")){ %>
+                        <input type="checkbox" value="JAVA" id="JAVA" name="skills" class="mx-1" checked>
+                    <%}else{%>
+                        <input type="checkbox" value="JAVA" id="JAVA" name="skills" class="mx-1">
+                    <%}%>  
+                    <label for="JAVA">JAVA</label>
+                </span>
+                <span>
+                    <% if(job.skills.includes("BootStrap")){ %>
+                        <input type="checkbox" value="BootStrap" id="BootStrap" name="skills" class="mx-1" checked>
+                    <%}else{%>
+                        <input type="checkbox" value="BootStrap" id="BootStrap" name="skills" class="mx-1">
+                    <%}%>
+                    <label for="BootStrap">BootStrap</label>
+                </span>
+            </div>
+            <div class="d-flex flex-column align-items-center w-50 h-100 py-3">
+                <label for="apply-by">Apply By</label>
+                <input type="date" class="form-control w-100 mt-2 text-secondary" value="<%=job.applyBy%>" id="apply-by" name="applyBy" style=" border: none; outline:none;">
+              </div>
+        </div>
+        <button class="btn btn-warning text-light px-5 py-1 mb-2 mx-auto d-block">Submit</button>
+      </form>
+</div>

@@ -1,0 +1,69 @@
+<div class="d-flex flex-wrap justify-content-center p-3 my-5" style="background-color:#1ea8c4; min-height: 85vh;">
+    <div class="card m-3" style="width:80vw; height:100%;">
+      <% if(job.id % 2 == 0){ %>
+        <img src="/images/post-banner-even.jpg" height="200px">
+        <%}else{%>
+          <img src="/images/post-banner-odd.png" height="200px">
+          <%}%>
+        <h2 class="text-center fw-light p-3 text-primary"><span class="text-danger"><%=job.designation%></span> oppertunity in <%=job.location%> at <span class="text-success"><%=job.companyName%></span></h2>
+        <div class="card-body">
+          <div class="d-flex">
+            <a href="#" class="btn btn-secondary px-3 py-1" style="cursor:default;">Actively hiring <i class="fa-solid fa-user"></i></a>
+          </div>
+          <h5 class="card-title my-2 ms-2 text-danger"><%=job.companyName%></h5>
+          <h6 class="card-subtitle my-2 ms-2 text-body-secondary"><%=job.jobCategory%> <span class="text-danger"><%=job.designation%></span></h6>
+          <div class="d-flex  flex-column my-3 ms-4">
+            <p class="card-text"><i class="fa-solid fa-location-dot text-success"></i> <%=job.location%></p>
+            <p class="card-text"><i class="fa-solid fa-indian-rupee-sign"></i> <%=job.salary%></p>
+            <p class="card-text"><i class="fa-regular fa-calendar-days"></i> Apply By <%=job.applyBy%></p>
+            <p class="card-text"><i class="fa-solid fa-list-ol"></i> Number of openings: <%=job.position%></p>
+            <a href="/job/applicants/<%=job.id%>"  style="text-decoration: none;"><p class="card-text text-danger" style="cursor: pointer;"><i class="fa-solid fa-users"></i> Applicants: <%=job.totalApplicants%></p></a>
+            </div>
+          <div class="ms-4">
+            <%job.skills.forEach(skill=>{%>
+              <a href="#" class="btn btn-outline-success py-0" style="cursor:default;"><%=skill%></a>
+            <%})%>
+          </div>
+          <% if(locals.userEmail){ %>
+            <a href="/job/update/<%=job.id%>" class="btn btn-outline-primary fs-5 my-2 py-0 ms-4">Edit</a>
+            <a href="/job/delete/<%=job.id%>" class="btn btn-outline-danger fs-5 my-2 py-0 ms-1">Delete</a>
+          <%}else{ %>
+            <a href="#" class="btn btn-success fs-5 my-3 py-1 px-5 ms-4" role="button" data-bs-toggle="modal" data-bs-target="#jobApplyForm">Apply Now</a>
+            <%}%>
+          </div>
+        <button class="btn btn-warning">Posted: <%=job.jobPostDate%></button>
+    </div>
+
+    <!-- Job Application modal start -->
+    <div class="modal fade mt-5" id="jobApplyForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Quick Apply!</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form action="/job/apply/<%=job.id%>" enctype="multipart/form-data" method="post" class=" py-2 px-2 mx-auto"  style="background-color: white;">
+                <input type="hidden" class="form-control" id="id" name="id" value="<%= job.id %>">
+                  <div class="mb-3 d-flex align-items-center">
+                    <input type="text" class="form-control" name="name" placeholder="Name">
+                  </div>
+                  <div class="mb-3 d-flex align-items-center">
+                    <input type="email" class="form-control" name="email" placeholder="Email">
+                  </div>
+                  <div class="mb-3 d-flex align-items-center">
+                    <input type="number" class="form-control" name="phone" placeholder="Phone Number">
+                  </div>
+                  <div class="mb-3 d-flex align-items-center border rounded-2">
+                    <label for="resume" class=" text-secondary py-1 px-3 border-end border-dark">Resume</label>
+                    <input type="file" class="form-control text-secondary" id="resume" name="resume" accept="application/pdf" style="border: none; outline: none;">
+                  </div>
+                  <button type="submit" class="btn btn-primary text-light px-4 py-1">Submit</button>
+              </form>
+          </div>
+      </div>
+      </div>
+    </div>
+    <!-- Job Application Form Start  -->
+
+</div>

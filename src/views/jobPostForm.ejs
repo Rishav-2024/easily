@@ -1,0 +1,82 @@
+<div class="py-5">
+    <% if(error){%>
+        <div class="text-center mt-1">
+            <div class="alert bg-danger mt-1 py-1 " role="alert">
+                <h5 class="m-0 p-0 text-light"><%=error%></h5>
+            </div>
+        </div>
+    <%}%>
+    
+    <form action="/postjob" method="post" class="my-5 w-50 py-2 px-5 mx-auto"  style="background-color: white; box-shadow: 1px 1px 6px 4px rgba(0, 0, 0, 0.5); border-radius: 8px;">
+        <p class="fs-3 text-center">Post a new job</p>
+        <div class="mb-3 px-1 d-flex align-items-center border  border-secondary rounded-2">
+            <select class="w-100 p-1 text-secondary" name="jobCategory" style=" border: none; outline:none;">
+                <option value="">select job category</option>
+                <option value="Tech">Tech</option>
+                <option value="Non Tech">Non Tech</option>
+            </select>
+        </div>
+
+        <div class="mb-3 px-1 d-flex align-items-center border  border-secondary rounded-2">
+            <select name="designation" class="w-100 p-1 text-secondary" style=" border: none; outline:none;">
+                <option value="">select job designation</option>
+                <option value="HR">HR</option>
+                <option value="SDE">SDE</option>
+                <option value="DevOps">DevOps</option>
+                <option value="MERN Developer">MERN Developer</option>
+                <option value="MARN Developer">MARN Developer</option>
+                <option value="Front-End Developer">Front-End Developer</option>
+                <option value="Back-End Developer">Back-End Developer</option>
+                <option value="Full-Stack Developer">Full-Stack Developer</option>
+            </select>
+        </div>
+
+        <div class="mb-3 d-flex align-items-center border  border-secondary rounded-2">
+          <input type="text" class="form-control text-secondary" name="location"  placeholder="Job Location" style=" border: none; outline:none;">
+        </div>
+        <div class="mb-3 d-flex align-items-center border  border-secondary rounded-2">
+          <input type="text" class="form-control text-secondary" name="companyName" placeholder="Company Name" style=" border: none; outline:none;">
+        </div>
+        <div class="mb-3 d-flex align-items-center">
+          <input type="text" class="form-control border-secondary me-1 text-secondary" name="salary" placeholder="Salary">
+          <input type="number" class="form-control border-secondary ms-1 text-secondary" name="position" placeholder="Total Positions">
+        </div>
+        <div class="mb-3 d-flex align-items-center border border-secondary rounded-2">
+            <div class=" d-flex flex-column overflow-y-scroll w-50 p-1" style="height:100px;">
+                <span>
+                    <input type="checkbox" value="React" id="React" name="skills" class="mx-1">
+                    <label for="React">React</label>
+                </span>
+                <span>
+                    <input type="checkbox" value="NodeJs" id="NodeJs" name="skills" class="mx-1">
+                    <label for="NodeJs">NodeJs</label>
+                </span>
+                <span>
+                    <input type="checkbox" value="Express" id="Express" name="skills" class="mx-1">
+                    <label for="Express">Express</label>
+                </span>
+                <span>
+                    <input type="checkbox" value="MongoDB" id="MongoDB" name="skills" class="mx-1">
+                    <label for="MongoDB">MongoDB</label>
+                </span>
+                <span>
+                    <input type="checkbox" value="DSA" id="DSA" name="skills" class="mx-1">
+                    <label for="DSA">DSA</label>
+                </span>
+                <span>
+                    <input type="checkbox" value="JAVA" id="JAVA" name="skills" class="mx-1">
+                    <label for="JAVA">JAVA</label>
+                </span>
+                <span>
+                    <input type="checkbox" value="BootStrap" id="BootStrap" name="skills" class="mx-1">
+                    <label for="BootStrap">BootStrap</label>
+                </span>
+            </div>
+            <div class="d-flex flex-column align-items-center w-50 h-100 py-3">
+                <label for="apply-by">Apply By</label>
+                <input type="date" class="form-control w-100 mt-2 text-secondary" id="apply-by" name="applyBy" style=" border: none; outline:none;">
+              </div>
+        </div>
+        <button type="submit" class="btn btn-warning text-light px-5 py-1 mb-2 mx-auto d-block">Submit</button>
+      </form>
+</div>
